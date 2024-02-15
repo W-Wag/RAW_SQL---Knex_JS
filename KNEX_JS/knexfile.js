@@ -6,7 +6,7 @@
 module.exports = {
     client: 'mysql2',
     connection: {
-      user : 'usuario',
+      user : 'root',
       password : 'teste123',
       database : 'knexjs_db'
     },
