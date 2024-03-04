@@ -8,3 +8,22 @@ DELETE p FROM users u
 JOIN profiles p 
 ON p.user_id = u.id
 WHERE u.first_name = 'Katelyn'; */
+
+const knex = require('../knex/config/database')
+
+const deleteJoin = knex.raw(`
+DELETE p FROM users u
+JOIN profiles p 
+ON p.user_id = u.id
+WHERE u.first_name = ?; 
+`, ['Katelyn'])
+
+console.log(deleteJoin.toString())
+
+deleteJoin.then((data) => {
+  console.log(data)
+}).catch(err => {
+  console.error(err)
+}).finally(() => {
+  knex.destroy()
+})
